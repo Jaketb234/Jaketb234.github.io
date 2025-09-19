@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HTTP Project — Home</title>
+  <meta name="description" content="Intro to Web Dev project: HTTP overview, semantics, caching, history, and future.">
+  <link rel="stylesheet" href="additional/styles.css">
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1><a href="index.html">HTTP — Semantics, History, and Where It’s Going</a></h1>
+      <nav aria-label="Main">
+        <ul>
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="semantics.html">Semantics</a></li>
+          <li><a href="caching.html">Caching</a></li>
+          <li><a href="history.html">History</a></li>
+          <li><a href="future.html">Future</a></li>
+          <li><a href="references.html">References</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- Intro -->
+    <section class="card">
+      <h2>What this site is about</h2>
+      <p>
+        HyperText Transfer Protocol (HTTP) is the baseline application-layer protocol of the Web.
+        It uses a simple request–response model so different devices can communicate in a predictable way.
+        This site summarizes my essay on HTTP: how requests and responses work, how caching saves time,
+        where HTTP came from, and where it’s going.
+      </p>
+    </section>
+
+    <!-- Diagram (inline SVG so you don’t need an image file yet) -->
+    <section class="card" aria-labelledby="diagram-title">
+      <h2 id="diagram-title">Request / Response (at a glance)</h2>
+      <figure>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 220" role="img" aria-labelledby="t d">
+          <title id="t">HTTP Request/Response Flow</title>
+          <desc id="d">Client sends a request to the server; the server returns a response.</desc>
+          <rect x="40" y="40" width="240" height="140" rx="12" fill="#e9eefb" stroke="#9aa4d6"/>
+          <text x="160" y="70" text-anchor="middle" font-family="Arial" font-size="16" fill="#2b2f77">Client</text>
+          <rect x="620" y="40" width="240" height="140" rx="12" fill="#e9fbfd" stroke="#7bb8c6"/>
+          <text x="740" y="70" text-anchor="middle" font-family="Arial" font-size="16" fill="#135a66">Server</text>
+          <defs>
+            <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+              <path d="M0,0 L0,6 L9,3 z" fill="#666"/>
+            </marker>
+          </defs>
+          <path d="M300 100 C380 100, 560 100, 620 100" fill="none" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+          <path d="M620 130 C560 130, 380 130, 300 130" fill="none" stroke="#666" stroke-width="2" marker-end="url(#arrow)"/>
+          <text x="460" y="92" text-anchor="middle" font-family="Arial" font-size="13" fill="#222">
+            Request: method + target + headers + (optional) body
+          </text>
+          <text x="460" y="148" text-anchor="middle" font-family="Arial" font-size="13" fill="#222">
+            Response: status + headers + (optional) body
+          </text>
+        </svg>
+        <figcaption>The client asks; the server answers. Same shape across HTTP/1.1, HTTP/2, and HTTP/3.</figcaption>
+      </figure>
+    </section>
+
+    <!-- Table of contents -->
+    <section class="card" aria-labelledby="toc-title">
+      <h2 id="toc-title">Table of Contents</h2>
+      <ol>
+        <li><a href="semantics.html">Semantics: requests &amp; responses</a></li>
+        <li><a href="caching.html">Caching &amp; validation</a></li>
+        <li><a href="history.html">History: 0.9 → 1.0/1.1 → SPDY → HTTP/2 → HTTP/3</a></li>
+        <li><a href="future.html">Future of HTTP</a></li>
+        <li><a href="references.html">References</a></li>
+        <li><a href="about.html">About</a></li>
+      </ol>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p><small>IT 3203 — Intro to Web Dev • © 2025 Jake Wright</small></p>
+    </div>
+  </footer>
+</body>
+</html>
