@@ -24,8 +24,54 @@
 
   <main class="wrap">
     <article class="card">
-      <h2>PAGE TITLE</h2>
-      <p>Replace this with the page’s content.</p>
+      <h2>History of HTML</h2>
+      <p>The development of HTTP began in 1989, with CERN scientist Tim Berners-Lee's proposal for the Web.
+         This was a document describing the behavior of a client-server interaction using HTTP version 0.9.
+         It was proposed in order to gain the ability to exchange documents among different lab environments.
+         This version included a one line GET command that would return only HTML with no headers or status codes.
+         This proposal was accepted and underwent further development and was eventually released to the public
+         as HTTP version 1.0 in 1996. This version was formally documented as RFC 1945 by the Internet Engineering
+         Task Force (IETF) and the World Wide Web Consortium (W3C).  This updated version included request and
+         response headers, status codes to describe outcomes of pending requests, additional media aside from
+         HTML documents, as well as additional methods for interacting with the server. This was a big jump in
+         progress for HTTP, and it placed the initial foundation for the HTTP technology we use today. As
+         version 1.0 was underway, proper standardization of the technology was also being created. In 1997,
+         just a few months after HTTP 1.0 was released, HTTP 1.1 was published and documented as RFC 2068.
+         This was the first standardized instance of this protocol, and offered many improvements over 1.0.
+         With version 1.1 came reusable TCP connections, the HOST header, chunked transfer abilities,
+         additional caching, and content negotiation (language, type, encoding). These improvements
+         brought HTTP from a simple file fetcher to an advanced internet protocol. Reusing connections
+         and validating caches cut latency and bandwidth as pages grew more complex. However, since
+         it still uses a single TCP stream, users can only download one thing at a time. This is
+         called head-of-line blocking, and due to the expensive nature of TCP connections, it set
+         the stage for Google’s SPDY, HTML/2, and HTML 3.</p>
+
+      <p>As the early 2000s passed, web browsers became increasingly complex, causing a strain that even the
+         updated HTTP/1.1 protocol couldn’t effectively handle. A team at Google decided to address this problem
+         and came up with SPDY (“speedy”), published in 2009. SPDY kept the semantics (the methods, headers, and status codes)
+         of HTTP, but added an additional binary framing layer. This layer allows for request and response multiplexing,
+         which is when requests and responses can be sent concurrently over a single TCP connection. It also compressed
+         headers, prioritized important resources, and offered interleaved streaming, which assigned stream ID’s to
+         fragments of data, so the receiver can reassemble the stream in correct order. After being published, well
+         known browsers and websites such as Chrome, Google, Facebook and Twitter adopted SPDY and proved it worked
+         faster than HTTP/1.1. The results were impressive enough that it convinced the IETF to base HTTP/2 off SPDY’s
+         design, leading to RFC 7540 in 2015, and the retirement of SPDY in 2016. Due to the additional binary layer,
+         HTTP/2 was not backwards compatible, and therefore did not take the name HTTP/1.2.</p>
+
+      <p> With the standardization of HTTP/2, most of the SPDY technology was reused, but a couple things were updated
+         in the process. The biggest change this standardization brought was the universal usage of HTTP/2 across browsers
+         and servers worldwide, but additional subtle changes were also made before release. It replaced SPDY’s DEFLATE
+         header compression with HPACK, a more secure and efficient header compression format. Another important change
+         was the switch from SPDY’s NPN protocol negotiation to ALPN which allowed clients and servers to agree on which
+         protocol to use during the TLS handshake. This brought consistency, a quicker setup, and additional security
+         among web browsers. Although HTTP/2 showed a drastic improvement over HTTP/1.1, the occurrence of head-of-line
+         blocking on TCP connections, and the additional latency of their 3-way handshake was still a large inconvenience.
+         In the early 2010s Google began experimenting with a new protocol they developed called gQUIC, which ran HTTP
+         on an encrypted UDP transport connection. This new protocol quickly gained traction and was officially
+         standardized as QUIC (RFC 9000-9002) by the IETF. QUIC gives each request its own stream, eliminating
+         the main problem of TCP head-of-line blocking. The IETF integrated the semantics of HTTP onto QUIC,
+         forming HTTP/3 (RFC 9114). As of today, this is the newest version of HTTP being publicly used. HTTP/1.1
+         and HTTP/2 are both still widely used, but HTTP/3 is the default if both browsers support it.</p>
     </article>
   </main>
 

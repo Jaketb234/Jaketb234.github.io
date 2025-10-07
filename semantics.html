@@ -24,8 +24,32 @@
 
   <main class="wrap">
     <article class="card">
-      <h2>PAGE TITLE</h2>
-      <p>Replace this with the page’s content.</p>
+      <h2>Semantics</h2>
+      <p>HTTP has evolved over the years, and while quite simple, it has
+         many parts that make up its protocol. Each request includes the
+         method, target, headers, and sometimes a body. The method starts
+         the request and declares the semantics of it (GET, POST, PUT, DELETE, PATCH, HEAD).
+         The target defines what or where the request is going and usually
+         includes a URL. These look different depending on HTTP version,
+         as HTTP/1.1 requires the Host header, or the server will deny
+         the request. Headers are metadata that define the request’s
+         characteristics including content negotiation, routing, authorization/
+         cookies, and caching. In HTTP/2 and HTTP/3, only the start-line pieces
+         (method, scheme, authority, path) are carried as pseudo-headers;
+         regular headers stay regular headers. The body is optional, and 
+         it is the payload of the request declared by the content type.
+         For example, it could carry a payload like files or video segments.
+         The responses work a little differently, they mirror the request,
+         and each includes a status code, headers, and an optional body as well.
+         The status code informs the client of what happened with their request,
+         whether it succeeded, failed, needs authorization, or was redirected.
+         The response headers work like the requests’, but they describe what
+         the server sent, where request headers describe what client wants.
+         The body of the response is the content that is sent back to the client,
+         if it doesn’t have a body, then there was probably an error or the server
+         had nothing to return. When all of these components are combined, the server
+         knows exactly how to handle a request, and the client will be presented with
+         the correct data, or a reason as to why it wasn't obtained.</p>
     </article>
   </main>
 
