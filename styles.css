@@ -19,7 +19,7 @@ body {
 /* Header */
 header {
   background: white;
-  border-bottom: 1px solid gray;
+ /* border-bottom: 1px solid gray;*/
   padding: 10px 0;
 }
 header h1 {
