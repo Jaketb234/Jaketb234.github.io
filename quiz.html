@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Content Quiz — HTTP Project</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <header>
+    <h1><a href="index.html">HTTP Project</a></h1>
+    <nav>
+      <!--Nav bar with links --> 
+      <ul class="nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="semantics.html">Semantics</a></li>
+        <li><a href="history.html">History</a></li>
+        <li><a href="KeyConcepts.html">Key Concepts</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="quiz.html">Quiz</a></li>
+        <li><a href="references.html">References</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main (Quiz Text and Questions) -->
+  <main class="wrap">
+    <article class="card">
+      <h2>Self-Assessment Quiz on HTTP</h2>
+      <p><small>Answer, then click “Submit Quiz”. Results show below each question. “Reset Quiz” clears everything.</small></p>
+    
+<form id="quizForm">
+  <!-- Q1: Fill-in the blank (case insensitive) -->
+  <fieldset class="qblock">
+    <legend><strong>1) Fill in the blank (3 pts)</strong></legend>
+    <label for="q1">HTTP stands for <em>__________</em>.</label><br>
+    <input type="text" id="q1" name="q1" placeholder="Enter the phrase">
+    <div class="feedback" id="fb1"></div>
+  </fieldset>
+
+  <!-- Q2: Multiple Choice -->
+  <fieldset class="qblock">
+    <legend><strong>2) Which encryption protocol does HTTPS use? (1 pt)</strong></legend>
+    <label><input type="radio" name="q2" value="symmetric"> Symmetric Key</label><br>
+    <label><input type="radio" name="q2" value="tls"> TLS</label><br>
+    <label><input type="radio" name="q2" value="diffie"> Diffie-Hellman</label><br>
+    <label><input type="radio" name="q2" value="ssh"> Secure Shell</label>
+    <div class="feedback" id="fb2"></div>
+  </fieldset>
+
+  <!-- Q3: Multiple Choice -->
+  <fieldset class="qblock">
+    <legend><strong>3) Which header controls caching rules? (1 pt)</strong></legend>
+    <label><input type="radio" name="q3" value="content-type"> Content-Type</label><br>
+    <label><input type="radio" name="q3" value="cache-control"> Cache-Control</label><br>
+    <label><input type="radio" name="q3" value="authorization"> Authorization</label><br>
+    <label><input type="radio" name="q3" value="host"> Host</label>
+    <div class="feedback" id="fb3"></div>
+  </fieldset>
+
+  <!-- Q4: Multiple Choice -->
+  <fieldset class="qblock">
+    <legend><strong>4) Which HTTP version introduced multiplexing? (1 pt)</strong></legend>
+    <label><input type="radio" name="q4" value="1.1"> HTTP/1.1</label><br>
+    <label><input type="radio" name="q4" value="2"> HTTP/2</label><br>
+    <label><input type="radio" name="q4" value="3"> HTTP/3</label><br>
+    <label><input type="radio" name="q4" value="1"> HTTP/1</label>
+    <div class="feedback" id="fb4"></div>
+  </fieldset>
+
+  <!-- Q5: Mulitpile Selection -->
+  <fieldset class="qblock">
+    <legend><strong>5) Select all idempotent methods (4 pts)</strong></legend>
+    <label><input type="checkbox" name="q5" value="GET"> GET</label><br>
+    <label><input type="checkbox" name="q5" value="POST"> POST</label><br>
+    <label><input type="checkbox" name="q5" value="PUT"> PUT</label><br>
+    <label><input type="checkbox" name="q5" value="DELETE"> DELETE</label><br>
+    <label><input type="checkbox" name="q5" value="HEAD"> HEAD</label><br>
+    <label><input type="checkbox" name="q5" value="PATCH"> PATCH</label>
+    <div class="feedback" id="fb5"></div>
+  </fieldset>
+
+  <!-- Submit and Reset Buttons  -->
+  <button type="submit">Submit Quiz</button>
+  <button type="button" id="resetBtn">Reset Quiz</button>
+</form>
+
+<!-- Overall score -->
+<div id="overall" class="overall"></div>
+
+
+    </article>
+  </main>
+
+
+   <!-- Footer with ink to class site -->
+  <footer>
+    <div class="wrap">
+      <p><small>IT 3203 — Intro to Web Dev 2025 Jake Wright</small></p>
+    <p><small>Course website:
+      <a href="https://ksuweb.github.io/IT3203/" target="_blank">https://ksuweb.github.io/IT3203/</a>
+    </small></p>
+  </div>
+  </footer>
+
+
+  <!-- JS for Quiz functions -->
+<script>
+// Grade on submit event
+document.getElementById('quizForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  var score = 0;
+  var total = 10; // Q1 = 3pts Q2..Q4 = 1 pt each, Q5 = 4pts
+
+  // clear old feedback
+  clearBlock('fb1');
+  clearBlock('fb2');
+  clearBlock('fb3');
+  clearBlock('fb4');  
+  clearBlock('fb5');
+  clearOverall();
+
+  // Q1 (case-insensitive)
+  var a1 = document.getElementById('q1').value;
+  var ok1 = a1.trim().toLowerCase() === 'hypertext transfer protocol';
+  if (ok1) {
+    score += 3; // worth 3 points
+    setGood('fb1', 'Correct (3/3). HyperText Transfer Protocol.');
+  } else {
+    setBad('fb1', 'Incorrect (0/3). Answer: HyperText Transfer Protocol.');
+  }
+
+  // Q2
+var a2 = readRadio('q2');
+if (a2 === 'tls') {
+  score += 1; // worth 1 point
+  setGood('fb2', 'Correct (1/1). HTTPS uses TLS.');
+} else {
+  setBad('fb2', 'Incorrect (0/1). HTTPS uses TLS to encrypt data.');
+}
+
+// Q3
+var a3 = readRadio('q3');
+if (a3 === 'cache-control') {
+  setGood('fb3', 'Correct (1/1). Cache-Control defines caching rules.');
+  score += 1; // worth 1 point
+} else {
+  setBad('fb3', 'Incorrect (0/1). Answer: Cache-Control.');
+}
+
+// Q4
+var a4 = readRadio('q4');
+if (a4 === '2') {
+  score += 1; // worth 1 point
+  setGood('fb4', 'Correct (1/1). HTTP/2 added multiplexing.');
+} else {
+  setBad('fb4', 'Incorrect (0/1). Answer: HTTP/2.');
+}
+
+// Q5 Multiple Select (Partial credit for each right answer)
+var picked = readChecks('q5'); // array of values 
+var correctSet = ['GET', 'PUT', 'DELETE', 'HEAD'];
+var pointsQ5 = 0;
+
+// +1 for each correct method that was selected
+for (var i = 0; i < correctSet.length; i++) {
+  if (arrayHas(picked, correctSet[i])) {
+    pointsQ5 += 1;
+  }
+}
+
+// add to total score 
+score += pointsQ5;
+
+if (pointsQ5 === 4) {
+  setGood('fb5', 'Correct (4/4): GET, PUT, DELETE, HEAD.');
+} else {
+  setBad('fb5', 'Partial (' + pointsQ5 + '/4). Correct set: GET, PUT, DELETE, HEAD.');
+}
+
+
+  // overall box 
+  var passed = (score >= 7);
+  var box = document.getElementById('overall');
+  box.textContent = 'Score: ' + score + ' / ' + total + ' — ' + (passed ? 'PASS' : 'FAIL');
+  box.className = 'overall ' + (passed ? 'correct' : 'false');
+});
+
+// Reset clears inputs and feedback
+document.getElementById('resetBtn').addEventListener('click', function () {
+  document.getElementById('quizForm').reset();
+  clearBlock('fb1');
+  clearBlock('fb2');
+  clearBlock('fb3');
+  clearBlock('fb4');
+  clearBlock('fb5');
+  clearOverall();
+});
+
+// Helper functions for setting feedback and overall score
+function setGood(id, msg) {
+  var el = document.getElementById(id);
+  el.textContent = msg;
+  el.className = 'feedback correct';
+}
+function setBad(id, msg) {
+  var el = document.getElementById(id);
+  el.textContent = msg;
+  el.className = 'feedback false';
+}
+function clearBlock(id) {
+  var el = document.getElementById(id);
+  el.textContent = '';
+  el.className = 'feedback';
+}
+function clearOverall() {
+  var box = document.getElementById('overall');
+  box.textContent = '';
+  box.className = 'overall';
+}
+function readRadio(name) {  // Read the chosen radio value by group name (returns null if none picked)
+  var nodes = document.getElementsByName(name);
+  for (var i = 0; i < nodes.length; i++) {
+    if (nodes[i].checked) return nodes[i].value;
+  }
+  return null;
+}
+function readChecks(name) {
+  var out = [];
+  var nodes = document.getElementsByName(name);
+  for (var i = 0; i < nodes.length; i++) {
+    if (nodes[i].checked) out.push(nodes[i].value);
+  }
+  return out;
+}
+
+function arrayHas(arr, value) {     // simple index
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] === value) return true;
+  }
+  return false;
+}
+</script>
+</body>
+</html>
