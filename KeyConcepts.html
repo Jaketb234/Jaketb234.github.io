@@ -51,13 +51,29 @@
 
     <!-- 6 -->
     <li><strong>Versions:</strong> HTTP/1.1, HTTP/2, HTTP/3 same model, each is progressively faster.</li>
+    <br>
 
-    </ul>
-      
+    <!-- 7 -->
+    <li><strong>ETag:</strong> An ID for a file, lets the server state that it is unchanged (304).</li>
+    <br>  
+
+    <!-- 8 -->
+    <li><strong>Last-Modified:</strong> A timestamp the server can use to compare and look for changes.</li>
+    <br>
+
+    <!-- 9 -->
+    <li><strong>Idempotent:</strong> An operation that can be repeated with the same effect, preventing duplicate entries (GET, PUT, DELETE, HEAD).</li>
+    <br>
+
+    <!-- 10 -->
+    <li><strong>Stateless:</strong> The server doesn’t remember any prior requests. </li>
+
+    </ul>  
     </article>
 
     <section class="card">
   <h2>Quick Version Comparison</h2>
+  <div class="table-wrap">
   <table>
     <thead>
       <tr>
@@ -84,6 +100,7 @@
       </tr>
     </tbody>
   </table>
+  </div>
 </section>
   </main>
 

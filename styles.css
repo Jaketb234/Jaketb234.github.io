@@ -101,6 +101,9 @@ table {
   border-radius: 8px;
   overflow: hidden;
 }
+/* Table wrapper for mobile overflow */
+.table-wrap { overflow-x: auto; }
+
 th, td {
   border-bottom: 1px solid #edf2f7;
   padding: 10px;
@@ -127,12 +130,6 @@ footer {
   padding: 12px 0;
   text-align: center;
   color: #334155;                   
-}
-
-/* Small screens */
-@media (max-width: 480px) {
-  .nav { gap: 6px; }
-  .nav a { padding: 6px 10px; }
 }
 
 /* Quiz page  */
@@ -172,3 +169,27 @@ button:active { transform: translateY(1px); }
   border-radius: 8px;
   background: #e6fbff;              
 }
+
+/* Medium screens (tablets/small laptops) */
+@media (max-width: 900px) {
+  .wrap { padding: 0 10px; }
+  header h1 { font-size: 20px; }
+  .nav a { padding: 6px 10px; }
+  .card { padding: 14px; }
+}
+
+/* Small screens (phones) */
+@media (max-width: 480px) {
+  .nav { flex-direction: column; align-items: stretch; gap: 8px; }
+  .nav a { text-align: center; }
+  h2 { font-size: 1.15rem; }
+  input[type="text"], button { width: 100%; } /* bigger touch targets */
+  .qblock { padding: 10px; }
+}
+
+/* Larger touch targets */
+input[type="radio"], input[type="checkbox"] { transform: scale(1.15); margin-right: 6px; }
+@media (max-width: 480px) {
+  input[type="radio"], input[type="checkbox"] { transform: scale(1.25); }
+}
+

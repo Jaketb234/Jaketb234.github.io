@@ -46,7 +46,8 @@
          and validating caches cut latency and bandwidth as pages grew more complex. However, since
          it still uses a single TCP stream, users can only download one thing at a time. This is
          called head-of-line blocking, and due to the expensive nature of TCP connections, it set
-         the stage for Google’s SPDY, HTML/2, and HTML 3.</p>
+         the stage for Google’s SPDY, HTML/2, and HTML 3. However, because 1.1 shares one TCP stream,
+         one slow item stalls all others. This is a problem known as head-of-line blocking.</p>
 
       <p>As the early 2000s passed, web browsers became increasingly complex, causing a strain that even the
          updated HTTP/1.1 protocol couldn’t effectively handle. A team at Google decided to address this problem
@@ -70,11 +71,13 @@
          blocking on TCP connections, and the additional latency of their 3-way handshake was still a large inconvenience.
          In the early 2010s Google began experimenting with a new protocol they developed called gQUIC, which ran HTTP
          on an encrypted UDP transport connection. This new protocol quickly gained traction and was officially
-         standardized as QUIC (RFC 9000-9002) by the IETF. QUIC gives each request its own stream, eliminating
-         the main problem of TCP head-of-line blocking. The IETF integrated the semantics of HTTP onto QUIC,
-         forming HTTP/3 (RFC 9114). As of today, this is the newest version of HTTP being publicly used. HTTP/1.1
-         and HTTP/2 are both still widely used, but HTTP/3 is the default if both browsers support it.</p>
+         standardized as QUIC (RFC 9000-9002) by the IETF. QUIC gives each request its own stream over UDP, so a single
+         packet doesnt block the rest, eliminating the main problem of TCP head-of-line blocking. The IETF integrated the
+         semantics of HTTP onto QUIC, forming HTTP/3 (RFC 9114). As of today, this is the newest version of HTTP being publicly used.
+         HTTP/1.1 and HTTP/2 are both still widely used, but HTTP/3 is the default if both browsers support it.</p>
+    </article>
 
+    <section class="card">
          <h2>Future of HTML</h2>
          <p>As the upgrade of previous generations of HTTP shows, the future won't bring a new model.
          HTTP builds on itself, using its underlying semantics in all versions. It is likely that
@@ -86,7 +89,7 @@
          updates as necessary to keep its current technologies up to date. Privacy and security actively
          get better, as better encryption mechanisms are employed. The future of HTTP is relatively steady,
          with support for it to come for a long time.</p>
-    </article>
+    </section>
   </main>
 
    <!-- Footer with ink to class site -->
