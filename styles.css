@@ -43,6 +43,9 @@ header h1 a {
   justify-content: center;
   flex-wrap: wrap;
 }
+.nav li { 
+  flex: 0 0 auto;
+  margin: 6px; }
 .nav a {
   display: inline-block;
   padding: 8px 12px;
