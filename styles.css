@@ -63,6 +63,26 @@ header h1 a {
   box-shadow: 0 2px 6px rgba(34, 211, 238, 0.25);
 }
 
+/* --- Mobile nav fix --- */
+.nav {
+  display: flex;         
+  flex-direction: row;   
+  flex-wrap: wrap;        /* allow multiple lines */
+  justify-content: center;/* center each line */
+  align-items: center;    /* vertical align buttons */
+  padding-left: 0;      
+}
+
+.nav li {
+  flex: 0 0 auto;      
+  margin: 6px;            
+}
+
+@media (max-width: 480px) {
+  .nav { justify-content: center; } /* keep centered on phones */
+}
+
+
 /* Main + section cards */
 main { padding: 18px 0; }
 .card {
