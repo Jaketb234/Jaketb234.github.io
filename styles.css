@@ -183,6 +183,7 @@ button:active { transform: translateY(1px); }
 @media (max-width: 900px) {
   .wrap { padding: 0 10px; }
   header h1 { font-size: 20px; }
+  .nav { flex-direction: row; justify-content: center; align-items: center; gap: 8px; }
   .nav a { padding: 6px 10px; }
   .card { padding: 14px; }
 }
